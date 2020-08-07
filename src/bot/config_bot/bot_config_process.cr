@@ -5,29 +5,8 @@
 require "../depedency"
 
 module ConverterBOT
-  def _extractActionTextBlocks(configs)
-    configs.map do |c|
-      {
-        "actionCommand" => c.actionCommand,
-        "updateToPhase" => c.updateToPhase,
-        "textBlock" => c.textBlock
-      }
-    end
-  end
-
   def extractConversations(conversation)
-    conversation.map do |c|
-        {
-          "phase" => c.phase,
-          "actionResultBlock" => c.actionResultBlock,
-          "internVariables" => c.internVariables,
-          "updateToPhase" => c.updateToPhase,
-          "textBlock" => c.textBlock,
-          "helpTextBlock" => c.helpTextBlock,
-          "actionTextBlocks" => c.actionTextBlocks.is_a?(Array(BotMapped::ActionTextBlocks)) ? 
-          _extractActionTextBlocks(c.actionTextBlocks.as(Array(BotMapped::ActionTextBlocks))) : nil
-        }
-    end
+    conversation.map &.to_h
   end
 end
 

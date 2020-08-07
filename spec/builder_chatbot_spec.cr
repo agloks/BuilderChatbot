@@ -89,6 +89,14 @@ describe Bot do
 
       conversations[0].should be_truthy
     end
+
+    it "Converter to hash from BotMapped::Conversation", tags: "basic" do
+      configs = Utilies.getFromFileConfiguration(PATH_CONFIG_BOT + "bot_msg.json")
+      
+      configs["blocks"].as(Array(BotMapped::Conversation)).map do |x|
+        x.not_nil!.to_h.should be_a Hash(String, Array(Hash(String, Int32 | String | Nil)) | Array(String) | Bool | Int32 | String | Nil)
+      end
+    end
   end
 
   describe "#Functions" do
