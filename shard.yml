@@ -1,0 +1,13 @@
+name: BuilderChatbot
+version: 0.1.0
+
+authors:
+  - Agloks <smoke.day@yahoo.com>
+
+targets:
+  builder_chatbot:
+    main: src/builder_chatbot.cr
+
+crystal: 0.35.1
+
+license: MIT
